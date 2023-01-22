@@ -1,6 +1,7 @@
 <h1>Ask a Question</h1>
 
-<%= simple_form_for @question, url: '/questions', method: :post, id: 'new-question-form', remote: true do |f| %>
-  <%= f.input :text, label: 'Question:' %>
-  <%= f.button :submit, 'Submit Question' %>
+<%= simple_form_for @question do |f| %>
+  <%= f.input :title, label: "Question Title" %>
+  <%= f.input :text, label: "Question Text" %>
+  <%= f.button :submit, "Ask Question" %>
 <% end %>
