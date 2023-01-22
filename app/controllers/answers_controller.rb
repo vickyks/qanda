@@ -7,7 +7,8 @@ class AnswersController < ApplicationController
   end
 
   def new
-    @answer = @question.answers.new
+    @question = Question.find(params[:question_id])
+    @answer = Answer.new
   end
 
   def create

@@ -1,0 +1,8 @@
+<h1><%= @question.title %></h1>
+<p><%= @question.text %></p>
+
+<%= render 'answers/form', answer: @answer %>
+
+<h2>Answers:</h2>
+<%= render 'answers/list', answers: @question.answers %>
+
