@@ -1,7 +1,11 @@
 <h1><%= @question.title %></h1>
 <p><%= @question.text %></p>
 
-<%= render 'answers/form', answer: @answer %>
+<% if user_signed_in? %>
+  <%= render 'answers/form', answer: @answer %>
+<% else %>
+  <%= link_to "Sign in to answer", new_user_session_path %>
+<% end %>
 
 <h2>Answers:</h2>
 <%= render 'answers/list', answers: @question.answers %>

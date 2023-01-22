@@ -1,7 +1,9 @@
-<h1>Ask a Question</h1>
-
-<%= simple_form_for @question do |f| %>
-  <%= f.input :title, label: "Question Title" %>
-  <%= f.input :text, label: "Question Text" %>
-  <%= f.button :submit, "Ask Question" %>
+<% if user_signed_in? %>
+  <%= simple_form_for(@question) do |f| %>
+    <%= f.input :title %>
+    <%= f.input :text %>
+    <%= f.button :submit %>
+  <% end %>
+<% else %>
+  <p>You need to <%= link_to "sign in", new_user_session_path %> before you can ask a question.</p>
 <% end %>
