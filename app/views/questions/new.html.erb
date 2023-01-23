@@ -1,9 +1,17 @@
+<div class="content-wrapper">
+  <div class="content">
+
 <% if user_signed_in? %>
   <%= simple_form_for(@question) do |f| %>
     <%= f.input :title %>
     <%= f.input :text %>
     <%= f.button :submit %>
   <% end %>
+
+  <p>You are asking this question as <%= @user.email %></p>
 <% else %>
   <p>You need to <%= link_to "sign in", new_user_session_path %> before you can ask a question.</p>
 <% end %>
+
+  </div>
+</div>

@@ -1,4 +1,8 @@
 class QuestionsController < ApplicationController
+
+  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
+  before_action :set_current_user
+
   def index
     @questions = Question.all
   end
@@ -43,5 +47,9 @@ class QuestionsController < ApplicationController
 
   def question_params
     params.require(:question).permit(:text, :title)
+  end
+
+  def set_current_user
+    @user = current_user
   end
 end

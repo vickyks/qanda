@@ -1,4 +1,5 @@
 class AnswersController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
   before_action :set_question
   before_action :set_answer, except: [:index, :new, :create]
 
@@ -41,6 +42,10 @@ class AnswersController < ApplicationController
 
   def set_answer
     @answer = @question.answers.find(params[:id])
+  end
+
+  def set_current_user
+    @user = current_user
   end
 
   def answer_params

@@ -82,3 +82,12 @@ input[type="submit"] {
 input[type="submit"]:hover {
   background-color: #0069d9;
 }
+
+/* Center the website content */
+.content-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.content {
+  width: 80%; /* Use 80% of the page */
+}
