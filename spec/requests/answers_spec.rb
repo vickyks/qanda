@@ -1,11 +1,14 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 RSpec.describe 'Answers', type: :request do
   let(:question) { create(:question) }
   let(:valid_attributes) { attributes_for(:answer, question: question) }
   let(:invalid_attributes) { attributes_for(:answer, text: nil, question: question) }
+
+  before(:each) do
+    @user = create(:user)
+    sign_in @user
+  end
 
   describe 'GET /questions/:question_id/answers' do
     it 'returns a success response' do
