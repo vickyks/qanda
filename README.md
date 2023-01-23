@@ -1,24 +1,36 @@
-# README
+# Q&A App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a Q&A app, which requires users to login before submitting questions.
 
-Things you may want to cover:
 
-* Ruby version
+### Requirements
+Ruby 2.7.7, Rails 7
 
-* System dependencies
 
-* Configuration
+### Getting Started
 
-* Database creation
+Clone the repo, then run:
 
-* Database initialization
+```
+bundle install
+```
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+Migrate the database with
 
-* Deployment instructions
+```
+bundle exec rails db:migrate
 
-* ...
+```
+
+Run Tests with:
+```
+make test
+```
+
+Run the server with
+```
+bundle exec rails s
+```
+
+
