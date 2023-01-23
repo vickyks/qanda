@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class AnswersController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: %i[create edit update destroy]
   before_action :set_question
-  before_action :set_answer, except: [:index, :new, :create]
+  before_action :set_answer, except: %i[index new create]
 
   def index
     @answers = @question.answers
@@ -23,7 +25,7 @@ class AnswersController < ApplicationController
 
   def update
     if @answer.update(answer_params)
-      redirect_to [@question, @answer], notice: "You changed your answer"
+      redirect_to [@question, @answer], notice: 'You changed your answer'
     else
       render :edit
     end
@@ -31,7 +33,7 @@ class AnswersController < ApplicationController
 
   def destroy
     @answer.destroy
-    redirect_to question_answers_url(@question), notice: "You deleted your answer!"
+    redirect_to question_answers_url(@question), notice: 'You deleted your answer!'
   end
 
   private

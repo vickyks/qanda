@@ -1,6 +1,7 @@
-class QuestionsController < ApplicationController
+# frozen_string_literal: true
 
-  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
+class QuestionsController < ApplicationController
+  before_action :authenticate_user!, only: %i[create edit update destroy]
   before_action :set_current_user
 
   def index
@@ -31,7 +32,7 @@ class QuestionsController < ApplicationController
   def update
     @question = Question.find(params[:id])
     if @question.update(question_params)
-      redirect_to @question, notice: "You edited your question."
+      redirect_to @question, notice: 'You edited your question.'
     else
       render :edit
     end
@@ -40,7 +41,7 @@ class QuestionsController < ApplicationController
   def destroy
     @question = Question.find(params[:id])
     @question.destroy
-    redirect_to questions_url, notice: "Question deleted!"
+    redirect_to questions_url, notice: 'Question deleted!'
   end
 
   private
