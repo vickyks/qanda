@@ -19,7 +19,11 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     if @question.save
-      redirect_to @question, notice: "You've asked a question!"
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to redirect_to questions_url, notice: "You've asked a question!" }
+        format.json { head :no_content }
+      end
     else
       render :new
     end
@@ -32,7 +36,11 @@ class QuestionsController < ApplicationController
   def update
     @question = Question.find(params[:id])
     if @question.update(question_params)
-      redirect_to @question, notice: 'You edited your question.'
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to redirect_to questions_url, notice: 'You edited your question.' }
+        format.json { head :no_content }
+      end
     else
       render :edit
     end
@@ -41,7 +49,11 @@ class QuestionsController < ApplicationController
   def destroy
     @question = Question.find(params[:id])
     @question.destroy
-    redirect_to questions_url, notice: 'Question deleted!'
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to questions_url, notice: 'Question deleted!' }
+      format.json { head :no_content }
+    end
   end
 
   private

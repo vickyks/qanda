@@ -24,6 +24,9 @@ gem 'importmap-rails'
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem 'turbo-rails'
 
+# turbo isn't compatible with simple_form
+gem 'hoodoo', '~> 2.12', require: false
+
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem 'stimulus-rails'
 
@@ -66,6 +69,7 @@ group :development, :test do
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
   gem 'strong_versions'
+  gem 'pry'
 end
 
 group :development do
